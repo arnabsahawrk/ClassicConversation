@@ -66,9 +66,9 @@ function discussFunctionality(posts) {
                 </li>
               </ul>
               <button
-                onclick="marked('${post?.title || "Not Available"}', '${
-      post?.view_count || "Not Available"
-    }')"
+                onclick="marked('${
+                  post?.title.replace("'", "\\'") || "Not Available"
+                }', '${post?.view_count || "Not Available"}')"
                 type="button"
                 class="bg-[#10B981] text-white px-2 py-1 rounded-full"
               >
@@ -114,4 +114,62 @@ const marked = (title, view) => {
   selected.appendChild(article);
 };
 
+//Latest Post
+const latestPost = async () => {
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
+  );
+  const data = await res.json();
+  console.log(data);
+  latestFunctionality(data);
+};
+
+function latestFunctionality(posts) {
+  const lPostSection = document.getElementById("latestPost");
+
+  // Lopping On Post
+  posts.forEach((post) => {
+    const div = document.createElement("div");
+    div.className = "p-6 rounded-3xl border border-[#12132D26] space-y-4";
+
+    div.innerHTML = `
+    <img
+    class="object-cover max-w-full rounded-2xl"
+    src="${post?.cover_image || "Not Available"}"
+    alt=""
+  />
+  <p class="text-[#12132D99] text-base">
+    <i class="fa-solid fa-calendar-day"></i>
+    <span>${post?.author?.posted_date || "No publish date"}</span>
+  </p>
+  <article>
+    <h2 class="text-[#12132D] text-lg font-extrabold">
+    ${post?.title || "Not Available"}
+    </h2>
+    <p class="text-base text-[#12132D99]">
+    ${post?.description || "Not Available"}
+    </p>
+  </article>
+  <ul class="grid grid-cols-6">
+    <li class="row-span-2">
+      <img
+        class="object-cover size-11 rounded-full"
+        src="${post?.profile_image || "Not Available"}"
+        alt=""
+      />
+    </li>
+    <li class="col-span-5 text-[#12132D] text-base font-bold">
+    ${post?.author?.name || "Not Available"}
+    </li>
+    <li class="col-span-5 text-[#12132D99] text-sm">${
+      post?.author?.designation || "Unknown"
+    }</li>
+  </ul>
+    `;
+
+    lPostSection.appendChild(div);
+  });
+}
+
 allPostLoadData();
+latestPost();
