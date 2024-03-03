@@ -171,81 +171,19 @@
         </p>
         <div class="flex flex-col-reverse lg:flex-row gap-6 justify-between">
           <!-- Post Posted-->
-          <div
-            class="flex flex-col md:flex-row gap-6 p-10 bg-[#797DFC1A] rounded-3xl"
-          >
-            <!-- Author -->
-            <div class="relative">
-              <img
-                class="size-[72px] rounded-2xl"
-                src="https://i.ibb.co/0QRxkd5/pexels-jan-kop-iva-3525908.jpg"
-                alt=""
-              />
-              <span
-                class="absolute top-0 left-14 md:left-10 lg:left-14 transform -translate-y-1/4 size-[18.667px] bg-[#FF3434] rounded-full"
-              ></span>
-            </div>
-            <!-- Post  -->
-            <div class="space-y-4">
-              <ul
-                class="flex gap-6 items-center text-sm text-[#12132DCC] font-medium"
-              >
-                <li># <span>Music</span></li>
-                <li>Author: <span>Awlad Hossain</span></li>
-              </ul>
-              <article class="border-b-2 border-dashed border-[#12132D40]">
-                <h2 class="text-xl text-[#12132D] font-bold mb-4">
-                  10 Kids Unaware of Their Halloween Costume
-                </h2>
-                <p class="text-base text-[#12132D99] font-medium mb-5">
-                  It’s one thing to subject yourself to ha Halloween costume
-                  mishap because, hey that’s your prerogative
-                </p>
-              </article>
-              <div class="flex items-center justify-between">
-                <ul class="flex gap-6 items-center text-base text-[#12132D99]">
-                  <li class="flex gap-3 items-center">
-                    <i class="fa-solid fa-message"></i><span>560</span>
-                  </li>
-                  <li class="flex gap-3 items-center">
-                    <i class="fa-regular fa-eye"></i><span>1,568</span>
-                  </li>
-                  <li class="flex gap-3 items-center">
-                    <i class="fa-regular fa-clock"></i><span>5 min</span>
-                  </li>
-                </ul>
-                <button
-                  onclick="marked()"
-                  type="button"
-                  class="bg-[#10B981] text-white px-2 py-1 rounded-full"
-                >
-                  <i class="fa-regular fa-envelope-open"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+          <div id="posts" class="space-y-6 flex-1"></div>
           <!-- Post Marked -->
-          <div class="p-6 bg-[#12132D0D] rounded-3xl space-y-4">
+          <div
+            id="markedPost"
+            class="p-6 bg-[#12132D0D] rounded-3xl space-y-4 lg:w-[374px] max-h-[465px] overflow-auto"
+          >
             <ul class="flex justify-between">
               <li class="text-[#12132D] text-xl font-bold">Title</li>
               <li class="text-[#12132D99] text-base">
-                <i
-                  id="markChecked"
-                  class="text-[#3DCE09] fa-solid fa-check-double"
-                ></i>
+                <i id="markChecked" class="fa-solid fa-check-double"></i>
                 Mark as read (<span id="markedCount">0</span>)
               </li>
             </ul>
-            <article
-              class="flex items-center justify-between bg-white p-4 rounded-2xl"
-            >
-              <p id="markedPost" class="text-[#12132D] text-base font-semibold">
-                10 Kids Unaware of Their Halloween Costume
-              </p>
-              <p class="flex gap-3 items-center text-base text-[#12132D99]">
-                <i class="fa-regular fa-eye"></i><span>1,568</span>
-              </p>
-            </article>
           </div>
         </div>
       </section>
